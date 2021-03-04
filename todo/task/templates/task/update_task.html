@@ -1,0 +1,56 @@
+<style>
+    h3 {
+        text-transform: uppercase;
+        font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 30px;
+        text-align: center;
+        color: blueviolet;
+    }
+
+    form {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .btn {
+        padding: 5px 10px;
+        font-size: 18px;
+        font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        background-color: black;
+        color: white;
+        margin-left: 5px;
+        margin-top: 20px;
+        border-radius: 4px;
+    }
+
+    .btn:hover {
+        background-color: green;
+    }
+    #id_title{
+        width: 400px;
+        border-radius: 3px;
+        border: 1px solid black;
+        height: 35px;
+        font-size: 20px;
+        font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    #id_title:focus{
+        outline-color: purple;
+    }
+
+    label{
+        font-size: large;
+        font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+</style>
+
+<h3>Update Task</h3>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input class="btn" type="submit" name="Update Task">
+</form>

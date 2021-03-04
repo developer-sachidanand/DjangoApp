@@ -1,0 +1,107 @@
+<style>
+    h3{
+        text-transform: uppercase;
+        font-family:Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 30px;
+        text-align: center;
+        color: blueviolet;
+    }
+    form{
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .btn{
+        padding: 5px 10px;
+        font-size: 18px;
+        font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        background-color: black;
+        color: white;
+        margin-left: 5px;
+        border-radius: 4px;
+    }
+    .btn:hover{
+        background-color: green;
+    }
+    #id_title{
+        width: 300px;
+        border-radius: 3px;
+        border: 1px solid black;
+        height: 35px;
+        font-size: 20px;
+        font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    #id_title:focus{
+        outline-color: purple;
+    }
+
+    .container{
+        border: 1px solid red;
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        width: 500px;
+        margin: auto;
+        background-color: rosybrown;
+        padding: 10px 3px;
+        margin-top: 4px;
+        border-radius: 5px;
+    }
+    .complete{
+        flex-grow: 1;
+        text-align: end;
+        color: cornsilk;
+    }
+    span{
+        flex-grow: 1;
+        text-align: end;
+        color: chartreuse;
+    }
+
+    .text-style{
+        font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 18px;
+
+    }
+
+    a{
+        padding: 2px 4px;
+        font-size: 18px;
+        font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        background-color: black;
+        color: white;
+        margin-left: 5px;
+        border-radius: 4px; 
+        text-decoration: none; 
+    }
+    .edit:hover{
+        background-color: royalblue;
+    }
+    .delete:hover{
+        background-color: rgba(255, 0, 0, 0.733);
+    }
+</style>
+
+<h3>todo app</h3>
+
+<form method="POST" action="/">
+    {% csrf_token %}
+    {{form.title}}
+    <input class="btn" type="submit" value="Create Task" name="Create Task">
+</form>
+
+{% for task in tasks %}
+    <div class="container">
+        <div>
+            <a class="edit" href="{% url 'update_task' task.id %}">Edit</a>
+            <a class="delete" href="{% url 'delete_task' task.id %}">Delete</a>
+        </div>
+        {% if task.complete == True %}
+            <strike class="complete text-style">{{ task }}</strike>
+        {% else %}
+            <span class="text-style">{{ task }}</span>
+        {% endif %}
+    </div>
+{% endfor %}
